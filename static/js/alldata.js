@@ -62,8 +62,9 @@ function showData(data) {
 }
 
 function addLoader(id) {
-    document.getElementById(id).parentNode.innerHTML = `<div id=${id} class="loading rotateme">
+    document.getElementById(id).parentNode.innerHTML = `<div id=${id} class="loading" style="display:flex">
             <div class="circle rotateme"><i class="fa fa-spinner" aria-hidden="true"></i></div>
+            <div id="progressPercent">0% Uploaded</div>
         </div>`
 }
 
@@ -154,7 +155,18 @@ function handleForm(id) {
         var request = {
             "url": `/updatedata/${id}`,
             "method": "POST",
-            "data": data
+            "data": data,
+            xhr: function () {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function (evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = evt.loaded / evt.total;
+                        percentComplete = parseInt(percentComplete * 100);
+                        document.getElementById("progressPercent").innerHTML = `${percentComplete}% updated`;
+                    }
+                }, false);
+                return xhr;
+            },
         }
         $.ajax(request).done(function (response) {
             var xhr = new XMLHttpRequest();

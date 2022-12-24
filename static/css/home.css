@@ -63,7 +63,6 @@
 }
 
 .rotateme {
-    display: flex;
     animation: loader 2s linear infinite;
 }
 
