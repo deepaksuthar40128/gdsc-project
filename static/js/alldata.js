@@ -136,6 +136,7 @@ function handleForm(id) {
     myform = document.getElementById(id);
     myform.addEventListener('reset', () => {
         myform.children[0].children[0].children[0].setAttribute('src', old_img_data);
+        img_data = old_img_data;
     })
 
 
