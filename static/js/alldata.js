@@ -104,6 +104,7 @@ function edit(id) {
     handleForm(id);
     userprofile = document.getElementById(id).children[0].children[0];
     old_img_data = userprofile.children[0].getAttribute('src');
+    img_data = old_img_data;
     userprofile.children[1].removeAttribute('disabled');
     Array.from(document.getElementById(id).children[1].children).forEach(ele => {
         ele.removeAttribute('disabled');
@@ -161,6 +162,7 @@ function handleForm(id) {
             xhr.onload = function () {
                 newdata = JSON.parse(this.responseText);
                 removeLoader(newdata);
+                img_data = 'img/blank_male.png', old_img_data = 'img/blank_male.png';
             };
             xhr.send();
         })
