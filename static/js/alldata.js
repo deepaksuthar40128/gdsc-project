@@ -1,4 +1,4 @@
-let img_data = '*', old_img_data = '*';
+let img_data = 'img/blank_male.png', old_img_data = 'img/blank_male.png';
 
 function alluser(queryString) {
     var xhr = new XMLHttpRequest();
@@ -13,7 +13,6 @@ function alluser(queryString) {
 
 
 function runarray(Ids) {
-    const alluserimg = document.getElementById('subbox');
     if (Ids.length == 0) console.log('none');
     else {
         Ids.forEach(id => {
@@ -36,14 +35,12 @@ function getdata(id) {
 
 
 function showData(data) {
-    console.log(data);
-    userimg = data.userimg == '*' ? 'img/blank_male.png' : data.userimg;
     document.getElementsByClassName('main')[0].innerHTML += `
     <div>
         <form id="${data._id}" class="myform" action="#">
             <label for="userimg">
                 <div class="userprofile">
-                    <img src="${userimg}" alt="${data.username}">
+                    <img src="${data.userimg}" alt="${data.username}">
                     <input disabled hidden type="file" name="userimg" id="userimg">
                 </div>
             </label>
@@ -53,14 +50,14 @@ function showData(data) {
                 <input disabled type="text" name="rollNo" id="rollNo" placeholder="${data.rollNo}">
                 <button disabled style="background-color: green;" type = "submit">Update</button>
                 <button disabled style="background-color: red;" type="reset">Reset</button>
-                </div>
+            </div>
         </form>
-        <hr>
+                <hr>
         <div class="sub-btns">
-            <button onclick="edit('${data._id}')" style="background-color: #4f5cbf;">Edit Data</button>
-            <button onclick="removeAcc('${data._id}')" style="background-color: red;" type="reset">Delete</button>
-        </div>
-        <hr>
+                <button onclick="edit('${data._id}')" style="background-color: #4f5cbf;">Edit Data</button>
+                <button onclick="removeAcc('${data._id}')" style="background-color: red;" type="reset">Delete</button>
+         </div>
+                <hr>
     </div>`
 }
 
@@ -76,7 +73,7 @@ function removeLoader(data) {
         <form id="${data._id}" class="myform" action="#">
             <label for="userimg">
                 <div class="userprofile">
-                    <img src="${userimg}" alt="${data.username}">
+                    <img src="${data.userimg}" alt="${data.username}">
                     <input disabled hidden type="file" name="userimg" id="userimg">
                 </div>
             </label>
@@ -86,11 +83,15 @@ function removeLoader(data) {
                 <input disabled type="text" name="rollNo" id="rollNo" placeholder="${data.rollNo}">
                 <button disabled style="background-color: green;" type = "submit">Update</button>
                 <button disabled style="background-color: red;" type="reset">Reset</button>
-                </div>
+            </div>
         </form>
-        <button onclick="edit('${data._id}')" style="background-color: #4f5cbf;">Edit Data</button>
-        <button onclick="removeAcc('${data._id}')" style="background-color: red;" type="reset">Delete</button>
-        </div>`
+                <hr>
+        <div class="sub-btns">
+                <button onclick="edit('${data._id}')" style="background-color: #4f5cbf;">Edit Data</button>
+                <button onclick="removeAcc('${data._id}')" style="background-color: red;" type="reset">Delete</button>
+         </div>
+                <hr>
+    </div>`
 }
 
 
@@ -103,7 +104,6 @@ function edit(id) {
     handleForm(id);
     userprofile = document.getElementById(id).children[0].children[0];
     old_img_data = userprofile.children[0].getAttribute('src');
-    img_data = old_img_data.length > 50 ? old_img_data : '*';
     userprofile.children[1].removeAttribute('disabled');
     Array.from(document.getElementById(id).children[1].children).forEach(ele => {
         ele.removeAttribute('disabled');
@@ -159,8 +159,8 @@ function handleForm(id) {
             xhr.open('GET', `/user/${id}`, true);
             xhr.getResponseHeader('Content-type', 'application/json');
             xhr.onload = function () {
-                data = JSON.parse(this.responseText);
-                removeLoader(data);
+                newdata = JSON.parse(this.responseText);
+                removeLoader(newdata);
             };
             xhr.send();
         })

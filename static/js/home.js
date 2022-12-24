@@ -1,6 +1,6 @@
 let myform = document.getElementsByClassName('myform')[0];
 let userimg = document.getElementsByClassName('userprofile')[0].children[1];
-let img_data = '*';
+let img_data = 'img/blank_male.png';
 
 
 userimg.addEventListener('change', () => {
@@ -16,7 +16,7 @@ userimg.addEventListener('change', () => {
 
 myform.addEventListener('reset', () => {
     userimg.parentElement.children[0].setAttribute('src', 'img/blank_male.png');
-    img_data = '*';
+    img_data = 'img/blank_male.png';
 })
 
 
