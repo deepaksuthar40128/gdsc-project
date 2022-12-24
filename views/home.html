@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <title>Students Bucket</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="title">
+            <h2>Students Bucket</h2>
+        </div>
+        <div class="options">
+            <ul>
+                <li class="option">Home</li>
+                <li class="option"> <a href="/alldata">Show All Data</a></li>
+                <li class="option">About</li>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <form class="myform" id="myform" action="#">
+            <label for="userimg">
+                <div class="userprofile">
+                    <img src="img/blank_male.png" alt="userimg">
+                    <input hidden type="file" name="userimg" id="userimg">
+                </div>
+            </label>
+            <div class="other">
+                <input type="text" name="username" id="username" required placeholder="Name">
+                <input type="email" name="email" id="email" required placeholder="Email">
+                <input type="text" name="rollNo" id="rollNo" required placeholder="Roll No">
+                <button style="background-color: green;" type="submit">Add Data</button>
+                <button style="background-color: red;" type="reset">Reset</button>
+            </div>
+        </form>
+        <div class="loading">
+            <div class="circle rotateme"><i class="fa fa-spinner" aria-hidden="true"></i></div>
+        </div>
+    </div>
+    <script src="js/home.js"></script>
+</body>
+
+</html>

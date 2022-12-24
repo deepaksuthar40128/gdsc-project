@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    height: 4rem;
+    background-color: grey;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 2rem;
+    color: white;
+    position: sticky;
+    top: 0;
+}
+
+.navbar ul {
+    display: flex;
+}
+
+.navbar ul li {
+    list-style: none;
+    margin: 1rem;
+    padding: 4px;
+    border-radius: 4px;
+    background-color: rgb(141, 141, 141);
+    cursor: pointer;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar ul li:hover {
+    text-decoration: underline;
+}
+
+.main {
+    border: 1px solid black;
+    max-width: 40rem;
+    margin: 4rem auto;
+    padding-bottom: 10px;
+}
+
+.main form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    min-height: 18rem;
+}
+
+.loading {
+    display: none;
+    overflow: hidden;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    min-height: 18rem;
+}
+
+.rotateme {
+    display: flex;
+    animation: loader 2s linear infinite;
+}
+
+.sub-btns {
+    margin: 10px 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading i {
+    font-size: 43px;
+}
+
+.main form label {
+    width: 50%;
+}
+
+.main input {
+    display: block;
+}
+
+.userprofile {
+    border: 1px solid rgb(0, 0, 0);
+    height: 280px;
+    max-width: 13rem;
+    overflow: hidden;
+    align-items: center;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.other {
+    width: 50%;
+}
+
+.other input {
+    width: 80%;
+    height: 2rem;
+    margin: 2rem 0;
+    padding: 5px;
+}
+
+.userprofile img {
+    display: block;
+    height: 85%;
+    width: 90%;
+    object-fit: cover;
+    margin: 10px auto;
+}
+
+button {
+    width: 5rem;
+    padding: 7px;
+    margin: 0 1rem;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    outline: none;
+}
+
+button:focus {
+    box-shadow: 5px 5px 5px 2px grey;
+}
