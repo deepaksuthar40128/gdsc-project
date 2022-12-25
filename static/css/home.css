@@ -137,3 +137,13 @@ button {
 button:focus {
     box-shadow: 5px 5px 5px 2px grey;
 }
+
+#search {
+    width: 20rem;
+    height: 2rem;
+    padding: 10px;
+    border: none;
+    outline: none;
+    margin-right: 14px;
+    border-radius: 10px;
+}

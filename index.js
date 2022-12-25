@@ -76,12 +76,23 @@ app.get('/delete/:id', async (req, res) => {
 
 
 app.get('/allids', async (req, res) => {
-    var myids = await myuser.aggregate([
-        { $group: { _id: "$_id" } }
-    ]).exec()
-    if (myids[0])
+    if (req.query.username) {
+        var myids = await myuser.aggregate([
+            { $match: { username: req.query.username } },
+            { $group: { _id: "$_id" } }
+        ]).exec()
+        if (myids[0])
         res.send(myids);
-    else res.send({});
+        else res.send({});
+    }
+    else {
+        var myids = await myuser.aggregate([
+            { $group: { _id: "$_id" } }
+        ]).exec()
+        if (myids[0])
+            res.send(myids);
+        else res.send({});
+    }
 })
 
 
