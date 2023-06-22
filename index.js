@@ -78,7 +78,11 @@ app.get('/delete/:id', async (req, res) => {
 app.get('/allids', async (req, res) => {
     if (req.query.username) {
         var myids = await myuser.aggregate([
-            { $match: { username: req.query.username } },
+            {$match: {
+                $or: [
+                    { "myuser.username": { $regex: req.query.username, $options: "i" } }, { "myuser.email": { $regex: req.query.username, $options: "i" } }
+                ]
+            }},
             { $group: { _id: "$_id" } }
         ]).exec()
         if (myids[0])
