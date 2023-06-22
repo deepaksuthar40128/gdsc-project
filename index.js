@@ -80,7 +80,7 @@ app.get('/allids', async (req, res) => {
         var myids = await myuser.aggregate([
             {$match: {
                 $or: [
-                    { "myuser.username": { $regex: req.query.username, $options: "i" } }, { "myuser.email": { $regex: req.query.username, $options: "i" } }
+                    { "username": { $regex: req.query.username, $options: "i" } }, { "email": { $regex: req.query.username, $options: "i" } }
                 ]
             }},
             { $group: { _id: "$_id" } }
